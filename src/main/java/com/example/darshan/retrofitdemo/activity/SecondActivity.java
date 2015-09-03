@@ -1,7 +1,6 @@
 package com.example.darshan.retrofitdemo.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -12,9 +11,7 @@ import android.widget.Toast;
 import com.activeandroid.ActiveAndroid;
 import com.example.darshan.retrofitdemo.R;
 import com.example.darshan.retrofitdemo.model.request.LoginRequest;
-import com.example.darshan.retrofitdemo.model.request.LoginRequestModel;
 import com.example.darshan.retrofitdemo.model.response.ActionTagModel;
-import com.example.darshan.retrofitdemo.model.response.LoginResponseModel;
 import com.example.darshan.retrofitdemo.model.response.LongResponse;
 import com.example.darshan.retrofitdemo.model.response.LongResponseRealm;
 import com.example.darshan.retrofitdemo.model.response.ObjectList;
@@ -37,14 +34,10 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import rx.Observable;
 import rx.Observer;
-import rx.Scheduler;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 
-public class MainActivity extends BaseActivity {
+public class SecondActivity extends BaseActivity {
 
     private Button btnCallApi;
     public static final String TAG = "Retrofit";
@@ -57,7 +50,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         // Obtain a Realm instance
-        realm = Realm.getInstance(MainActivity.this);
+        realm = Realm.getInstance(SecondActivity.this);
 
         RealmQuery<ObjectListRealm> query = realm.where(ObjectListRealm.class);
 
@@ -110,13 +103,13 @@ public class MainActivity extends BaseActivity {
             public void failure(RetrofitError error) {
                 hideDialog();
                 if (error.getKind() == RetrofitError.Kind.CONVERSION) {
-                    Toast.makeText(MainActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.HTTP) {
-                    Toast.makeText(MainActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.NETWORK) {
-                    Toast.makeText(MainActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.UNEXPECTED) {
-                    Toast.makeText(MainActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
                 }
                 Log.e(TAG, "-------Login error aavi bhai-------" + error.getMessage());
             }
@@ -138,13 +131,13 @@ public class MainActivity extends BaseActivity {
             public void failure(RetrofitError error) {
                 hideDialog();
                 if (error.getKind() == RetrofitError.Kind.CONVERSION) {
-                    Toast.makeText(MainActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.HTTP) {
-                    Toast.makeText(MainActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.NETWORK) {
-                    Toast.makeText(MainActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.UNEXPECTED) {
-                    Toast.makeText(MainActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
                 }
                 Log.e(TAG, "-------Login error aavi bhai-------" + error.getMessage());
             }
@@ -178,13 +171,13 @@ public class MainActivity extends BaseActivity {
             public void failure(RetrofitError error) {
                 hideDialog();
                 if (error.getKind() == RetrofitError.Kind.CONVERSION) {
-                    Toast.makeText(MainActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.HTTP) {
-                    Toast.makeText(MainActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.NETWORK) {
-                    Toast.makeText(MainActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.UNEXPECTED) {
-                    Toast.makeText(MainActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
                 }
                 Log.e(TAG, "-------Login error aavi bhai-------" + error.getMessage());
             }
@@ -224,8 +217,6 @@ public class MainActivity extends BaseActivity {
                 String strDate = sdf.format(c.getTime());
                 Log.e("Darshan", "--------------end---------->" + strDate);
 
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
             }
 
             @Override
@@ -259,13 +250,13 @@ public class MainActivity extends BaseActivity {
             public void failure(RetrofitError error) {
                 hideDialog();
                 if (error.getKind() == RetrofitError.Kind.CONVERSION) {
-                    Toast.makeText(MainActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Conversion Error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.HTTP) {
-                    Toast.makeText(MainActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Http connection error", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.NETWORK) {
-                    Toast.makeText(MainActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Connection Timeout. Please verify your internet connection.", Toast.LENGTH_SHORT).show();
                 } else if (error.getKind() == RetrofitError.Kind.UNEXPECTED) {
-                    Toast.makeText(MainActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Somthing went to wrong", Toast.LENGTH_SHORT).show();
                 }
                 Log.e(TAG, "-------Login error aavi bhai-------" + error.getMessage());
             }
